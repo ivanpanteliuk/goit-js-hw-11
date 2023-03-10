@@ -1,0 +1,127 @@
+// button styles
+.load-more-btn{
+    position: sticky;
+    left: 47%;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: #adbcf1;
+    cursor: pointer;
+    box-shadow: 0 5px 20px #8da3f2, 0 0 0 20px #ffffffeb;
+    border-radius: 5px;
+    border: none
+}
+
+.load-more-btn:disabled {
+    cursor: auto;
+}
+
+.load-more-btn:hover {
+    background-color: #7593ff;
+    box-shadow: 0 5px 20px #6887f8, 0 0 0 20px #ffffffeb;
+    animation: shake 0.5s;
+    
+}
+    @keyframes shake {
+        0% {
+            transform: translateX(0);
+        }
+    
+        20% {
+            transform: translateX(-5px);
+        }
+    
+        40% {
+            transform: translateX(5);
+        }
+    
+        60% {
+            transform: translateX(-5px);
+        }
+    
+        80% {
+            transform: translateX(5px);
+        }
+    
+        100% {
+            transform: translateX(0);
+        }
+    }
+
+
+
+.label{
+    margin-right: 10px;
+}
+
+// spinner styles
+
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #8da3f2;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    position: relative;
+    animation: pulse 1s linear infinite;
+}
+
+.loader:after {
+    content: '';
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    border: 5px solid #8da3f2;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: scaleUp 1s linear infinite;
+}
+
+@keyframes scaleUp {
+    0% {
+        transform: translate(-50%, -50%) scale(0)
+    }
+
+    60%,
+    100% {
+        transform: translate(-50%, -50%) scale(1)
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    60%,
+    100% {
+        transform: scale(1)
+    }
+
+    80% {
+        transform: scale(1.2)
+    }
+}
+
+// visually-hidden
+.is-hidden {
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    margin: -1px;
+}
+
+
