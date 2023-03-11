@@ -1,0 +1,27 @@
+.btn-container{
+    position: fixed;
+    bottom: 20px;
+    left: 90%;
+    width: 90px;
+}
+
+.scroll-up-btn {
+    border: none;
+    background-color: transparent;
+    transition: sticky 0.3s ease;
+    cursor: pointer;
+    
+}
+
+.scroll-btn {
+    border: none;
+    background-color: transparent;
+    transition: sticky 0.3s ease;
+    cursor: pointer;
+    
+}
+
+.scroll-btn:hover, .scroll-up-btn:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.15));
+}

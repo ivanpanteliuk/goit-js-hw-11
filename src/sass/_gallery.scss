@@ -1,3 +1,8 @@
+body{
+    background: $body-bg-color;
+    background: linear-gradient(280deg, rgba(117, 147, 255, 0.5168898125656513) 0%, rgba(189, 201, 240, 0.17235199743960083) 70%);;
+}
+
 .gallery {
     display: flex;
     flex-wrap: wrap;
@@ -10,6 +15,11 @@
     color: inherit;
 
     flex-basis: calc(25% - 30px);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery__item:hover{
+    transform: scale(1.05);
 }
 
 .photo-card {

@@ -5,8 +5,9 @@
 .search-form {
     margin-bottom: 40px;
     height: 110px;
-    background-color: #adbcf1;
-    box-shadow: 0 5px 20px #8da3f2, 0 0 0 20px #ffffffeb;
+    background: $search-form-bg-color;
+    background: radial-gradient(circle, rgba(95, 130, 255, 1) 0%, rgba(173, 188, 241, 0.7353772075236344) 100%);
+    box-shadow: 0 5px 20px $box-shadow-color, 0 0 0 20px $primary-white;
 }
 
 .tb {
@@ -21,7 +22,7 @@
 
 .search-form__input,
 .search-form__button {
-    color: #fff;
+    color: $primary-white;
     font-family: Nunito;
     padding: 0;
     margin: 0;
@@ -37,9 +38,9 @@
     width: 700px;
     padding: 35px;
     margin: -83px auto 0 auto;
-    background-color: #7593ff;
+    background-color: $input-cover-color;
     border-radius: 20px;
-    box-shadow: 0 10px 40px #8da3f2, 0 0 0 20px #ffffffeb;
+    box-shadow: 0 10px 40px $box-shadow-color, 0 0 0 20px $primary-white;
     transform: scale(0.6);
 }
 
@@ -51,7 +52,7 @@
 }
 
 .search-form__input::placeholder {
-    color: #becbfd;
+    color: $placeholder-text-color;
 }
 
 #s-cover {
@@ -75,7 +76,7 @@
     height: 70px;
     margin-top: 0;
     border-width: 15px;
-    border: 15px solid #fff;
+    border: 15px solid $primary-white;
     background-color: transparent;
     border-radius: 50%;
     transition: 0.5s ease all;
@@ -102,7 +103,7 @@
     right: 12;
     width: 45px;
     height: 15px;
-    background-color: #fff;
+    background-color: $primary-white;
     border-radius: 10px;
     transform: rotateZ(0);
     transition: 0.5s ease all;
@@ -113,7 +114,7 @@
     width: 67px;
     height: 15px;
     border-width: 0;
-    background-color: #fff;
+    background-color: $primary-white;
     border-radius: 20px;
 }
 
@@ -139,5 +140,5 @@
 #s-cover:hover .search-form__button .search-form__icon:after {
     right: -6px;
     width: 40px;
-    background-color: #fff;
+    background-color: $primary-white;
 }

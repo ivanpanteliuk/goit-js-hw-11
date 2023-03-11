@@ -12,21 +12,20 @@ export class ImagesApiService {
     this.hitsLength = 0;
   }
 
-  fetchImages() {
-    return axios
-      .get(
-        `${BASE_URL}?key=${API_KEY}&q=${this.searchQuery}&per_page=${resultsPerPage}&page=${this.currentPage}&image_type=photo&orientation=horizontal&safesearch=true`
-      )
-      .then(response => {
-        if (response.data.hits.length === 0) {
-          throw new Error(
-            'Sorry, there are no images matching your search query. Please try again.'
-          );
-        }
-        this.incrementPage();
-        this.incrementHits(response.data.hits);
-        return response.data;
-      });
+  async fetchImages() {
+    const URL = `${BASE_URL}?key=${API_KEY}&q=${this.searchQuery}&per_page=${resultsPerPage}&page=${this.currentPage}&image_type=photo&orientation=horizontal&safesearch=true`;
+
+    const response = await axios.get(URL);
+
+    if (response.data.hits.length === 0) {
+      throw new Error(
+        'Sorry, there are no images matching your search query. Please try again.'
+      );
+    }
+    this.incrementPage();
+    this.incrementHits(response.data.hits);
+
+    return response.data;
   }
 
   incrementPage() {

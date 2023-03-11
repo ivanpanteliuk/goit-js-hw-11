@@ -8,9 +8,9 @@
     align-items: center;
     justify-content: center;
     padding: 10px 20px;
-    background-color: #adbcf1;
+    background-color: $btn-bg-color;
     cursor: pointer;
-    box-shadow: 0 5px 20px #8da3f2, 0 0 0 20px #ffffffeb;
+    box-shadow: 0 5px 20px $box-shadow-color, 0 0 0 20px $primary-white;
     border-radius: 5px;
     border: none
 }
@@ -19,9 +19,9 @@
     cursor: auto;
 }
 
-.load-more-btn:hover {
-    background-color: #7593ff;
-    box-shadow: 0 5px 20px #6887f8, 0 0 0 20px #ffffffeb;
+.load-more-btn:not([disabled]):hover {
+    background-color: $btn-hover-bg-color;
+    box-shadow: 0 5px 20px $btn-hover-box-shadow-color, 0 0 0 20px $primary-white;
     animation: shake 0.5s;
     
 }
@@ -55,15 +55,24 @@
 
 .label{
     margin-right: 10px;
+    margin-left: 10px;
+    padding: 15px 0px 15px 0px;
+    color: $label-text-color;
+    font-size: 25px;
 }
 
 // spinner styles
+
+.spinner-container{
+    width: 48px;
+    height: 48px;
+}
 
 
 .loader {
     width: 48px;
     height: 48px;
-    border: 5px solid #8da3f2;
+    border: 5px solid $box-shadow-color;
     border-radius: 50%;
     display: inline-block;
     box-sizing: border-box;
@@ -76,7 +85,7 @@
     position: absolute;
     width: 48px;
     height: 48px;
-    border: 5px solid #8da3f2;
+    border: 5px solid $box-shadow-color;
     border-radius: 50%;
     display: inline-block;
     box-sizing: border-box;
