@@ -27,7 +27,7 @@ const notifyOptions = {
   cssAnimationStyle: 'zoom',
 };
 
-const loadMoreBtn = new LoadMoreBtn({
+export const loadMoreBtn = new LoadMoreBtn({
   selector: '[data-action="load-more-btn"]',
   hidden: true,
 });

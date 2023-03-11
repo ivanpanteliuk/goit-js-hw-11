@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { Notify } from 'notiflix';
-
+import { loadMoreBtn } from '..';
 const BASE_URL = 'https://pixabay.com/api/';
 const API_KEY = '34181989-96de03d33496f95df1ee3a725';
 let resultsPerPage = 40;
@@ -18,6 +17,7 @@ export class ImagesApiService {
     const response = await axios.get(URL);
 
     if (response.data.hits.length === 0) {
+      loadMoreBtn.hide();
       throw new Error(
         'Sorry, there are no images matching your search query. Please try again.'
       );
