@@ -1,6 +1,6 @@
 export const markup = {
   createGalleryMarkup(imagesArr) {
-    return (galleryMarkup = imagesArr
+    return imagesArr
       .map(
         image =>
           `<a href=${image.largeImageURL} class="gallery__item">
@@ -27,7 +27,7 @@ export const markup = {
 </div>
 </a>`
       )
-      .join(''));
+      .join('');
   },
   createScrollBtn() {
     const scrollUpBtnMarkup = `<div class="btn-container">
