@@ -12,7 +12,16 @@ export class ImagesApiService {
   }
 
   async fetchImages() {
-    const URL = `${BASE_URL}?key=${API_KEY}&q=${this.searchQuery}&per_page=${resultsPerPage}&page=${this.currentPage}&image_type=photo&orientation=horizontal&safesearch=true`;
+    const searchParams = new URLSearchParams({
+      q: this.searchQuery,
+      key: API_KEY,
+      per_page: resultsPerPage,
+      page: this.currentPage,
+      image_type: 'photo',
+      orientation: 'horizontal',
+      safesearch: true,
+    });
+    const URL = `${BASE_URL}?${searchParams}`;
 
     const response = await axios.get(URL);
 

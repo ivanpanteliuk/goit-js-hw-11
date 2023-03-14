@@ -1,10 +1,10 @@
 import { Notify } from 'notiflix';
-import { ImagesApiService } from './js/api-service';
 import SimpleLightbox from 'simplelightbox';
+import throttle from 'lodash.throttle';
+import { ImagesApiService } from './js/api-service';
 import LoadMoreBtn from './js/load-more-btn';
 import { markup } from './js/markup';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-import throttle from 'lodash.throttle';
 
 markup.createScrollBtn();
 
@@ -25,6 +25,7 @@ const notifyOptions = {
   clickToClose: true,
   fontSize: '20px',
   cssAnimationStyle: 'zoom',
+  showOnlyTheLastOne: true,
 };
 
 export const loadMoreBtn = new LoadMoreBtn({
@@ -59,14 +60,14 @@ async function onFormSubmit(evt) {
     return Notify.failure('Type search query, please');
 
   try {
-    const { hits, total } = await imagesApiService.fetchImages();
-    Notify.info(`Hooray! We found ${total} images.`);
+    const { hits, totalHits } = await imagesApiService.fetchImages();
+    Notify.info(`Hooray! We found ${totalHits} images.`);
     loadMoreBtn.disabled();
     markup.renderMarkup(refs.gallery, markup.createGalleryMarkup(hits));
     lightbox.refresh();
     loadMoreBtn.enabled();
     showOrHideScrollBtn();
-    checkIfEndOfSearchResult(imagesApiService.hits, total);
+    checkIfEndOfSearchResult(imagesApiService.hits, totalHits);
   } catch (err) {
     errorHandle(err);
   }
@@ -75,11 +76,11 @@ async function onFormSubmit(evt) {
 async function onLoadMoreBtnClick() {
   loadMoreBtn.disabled();
   try {
-    const { hits, total } = await imagesApiService.fetchImages();
-    Notify.info(`There are ${total - imagesApiService.hits} images left.`);
+    const { hits, totalHits } = await imagesApiService.fetchImages();
+    Notify.info(`There are ${totalHits - imagesApiService.hits} images left.`);
     markup.renderMarkup(refs.gallery, markup.createGalleryMarkup(hits));
     lightbox.refresh();
-    checkIfEndOfSearchResult(imagesApiService.hits, total);
+    checkIfEndOfSearchResult(imagesApiService.hits, totalHits);
     loadMoreBtn.enabled();
   } catch (err) {
     errorHandle(err);
@@ -100,11 +101,11 @@ function errorHandle(err) {
 }
 
 function onScrollBtnClick() {
+  const scrollPosition =
+    window.pageYOffset || document.documentElement.scrollTop;
   const { height: cardHeight } =
     refs.gallery.firstElementChild.getBoundingClientRect();
 
-  const scrollPosition =
-    window.pageYOffset || document.documentElement.scrollTop;
   const totalScrollHeight =
     document.documentElement.scrollHeight - window.innerHeight;
 
@@ -121,7 +122,6 @@ function onScrollBtnClick() {
 function onScroll() {
   const scrollPosition =
     window.pageYOffset || document.documentElement.scrollTop;
-
   if (scrollPosition > window.innerHeight / 2) {
     refs.scrollUpBtn.classList.remove('is-hidden');
   } else {
